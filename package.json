@@ -1,0 +1,25 @@
+{
+  "name": "webpack-learning",
+  "version": "1.0.0",
+  "description": "For learning webpack",
+  "main": "index.html",
+  "dependencies": {},
+  "devDependencies": {
+    "webpack": "^4.5.0",
+    "webpack-cli": "^2.0.14"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vladimirFr89/webpack-learning.git"
+  },
+  "author": "Vladimir Fedorin",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vladimirFr89/webpack-learning/issues"
+  },
+  "homepage": "https://github.com/vladimirFr89/webpack-learning#readme"
+}
