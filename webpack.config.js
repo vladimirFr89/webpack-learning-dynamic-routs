@@ -10,5 +10,20 @@ module.exports = {
 
     watch: nodeEnv === 'development',
 
-    devtool: nodeEnv === 'development' ? 'source-map': false
+    devtool: nodeEnv === 'development' ? 'source-map': false,
+
+    module: {
+        rules: [{
+            test: /\.js$/,
+            exclude: /node_modules/,
+            use: {
+                loader: 'babel-loader',
+                //обязательно нужно указать, иначе не будет переводить
+                options: {
+                    //делает доступным перевод для ES2015+
+                    presets: ['env']
+                }
+            }
+        }]
+    }
 };
