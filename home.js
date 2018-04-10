@@ -1,5 +1,9 @@
 'use strict';
 
-let welcome = require('./welcome');
+import welcome from './welcome';
 
-welcome('webpack learning!');
+import total from './calc';
+
+const summ = total(3,3);
+
+welcome(`webpack learning! ${summ}`);
