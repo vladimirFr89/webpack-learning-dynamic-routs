@@ -38,17 +38,23 @@ module.exports = {
 
 if (nodeEnv !== 'development') {
 
-    module.exports.optimization = {
-        minimizer:[
-            new UglifyJsPlugin({
-                sourceMap: true,
-                uglifyOptions: {
-                    compress:{
-                        drop_console: false,
-                        drop_debugger: true
-                    }
-                }
-            })
-        ]
-    };
+    const plugin = new UglifyJsPlugin({
+        sourceMap: true,
+        uglifyOptions: {
+            compress:{
+                drop_console: false,
+                drop_debugger: true,
+            }
+        }
+    });
+
+    if (module.exports.optimization) {
+        module.exports.optimization.minimizer = [].push(plugin);
+    } else {
+        module.exports.optimization = {
+            minimizer:[
+                plugin
+            ]
+        };
+    }
 }
