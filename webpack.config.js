@@ -33,6 +33,14 @@ module.exports = {
                 }
             }
         }]
+    },
+
+    optimization:{
+        splitChunks: {
+            name: 'commons',
+            minSize: 1,
+            chunks: 'initial'
+        }
     }
 };
 
@@ -49,7 +57,7 @@ if (nodeEnv !== 'development') {
     });
 
     if (module.exports.optimization) {
-        module.exports.optimization.minimizer = [].push(plugin);
+        module.exports.optimization.minimizer = [plugin];
     } else {
         module.exports.optimization = {
             minimizer:[
