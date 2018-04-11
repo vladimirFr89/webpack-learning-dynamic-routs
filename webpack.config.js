@@ -4,10 +4,16 @@ const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
 module.exports = {
     mode: nodeEnv === 'development' ? 'development': 'production',
-    entry: './home',
+
+    //содержит абсолютный путь для директории frontend
+    context: __dirname + "/frontend",
+    entry: {
+        home:'./home',
+        about: './about'
+    },
     output: {
-        filename: 'build.js',
-        path: path.resolve(__dirname, '')
+        filename: '[name].js',
+        path: path.resolve(__dirname, './public')
     },
 
     watch: nodeEnv === 'development',
