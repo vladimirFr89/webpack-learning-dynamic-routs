@@ -1,7 +1,9 @@
 const path = require('path');
 const nodeEnv = process.env.NODE_ENV;
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
 module.exports = {
+    mode: nodeEnv === 'development' ? 'development': 'production',
     entry: './home',
     output: {
         filename: 'build.js',
@@ -27,3 +29,20 @@ module.exports = {
         }]
     }
 };
+
+if (nodeEnv !== 'development') {
+
+    module.exports.optimization = {
+        minimizer:[
+            new UglifyJsPlugin({
+                sourceMap: true,
+                uglifyOptions: {
+                    compress:{
+                        drop_console: false,
+                        drop_debugger: true
+                    }
+                }
+            })
+        ]
+    };
+}
