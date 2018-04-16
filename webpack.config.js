@@ -13,7 +13,11 @@ module.exports = {
     },
     output: {
         filename: '[name].js',
-        path: path.resolve(__dirname, './public')
+        path: path.resolve(__dirname, './public'),
+        /*для динамического выполнения require. !!!ВАЖНО чтобы значение publicPath оканчивалось на / иначе
+        сборка выполенся, но при выполнении require выпадет ошибка
+        */
+        publicPath: '/public/'
     },
 
     watch: nodeEnv === 'development',
