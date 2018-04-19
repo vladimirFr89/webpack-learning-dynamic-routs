@@ -1,17 +1,14 @@
 'use strict';
 
-import welcome from './welcome';
-
-import total from './calc';
-
-const summ = total(3,3,3);
-console.log(`The total summ is ${summ}`);
-
-welcome(`webpack learning! ${summ}`);
-
 document.addEventListener("DOMContentLoaded", function(event) {
 
+    alert("Welcome to webpack dynamic learning!");
+
     document.getElementById('loginBtn').onclick = function () {
+
+        //Модуль login будет собран и добавлен в сборку
+        // let login = require('./login');
+        // login();
 
         //require.ensure будет при необходимости динамически выполнять require для модуля
         //третий параметр require.ensure позволяет объединять динамически подгружаемые модули в одну сборку
@@ -24,6 +21,10 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
     document.getElementById('logoutBtn').onclick = function () {
 
+        //Модуль logout будет собран и добавлен в сборку
+        // let logout = require('./logout');
+        // logout();
+
         require.ensure(['./logout'], function () {
             let login = require('./logout');
             login();
@@ -31,4 +32,3 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
     }
 });
-

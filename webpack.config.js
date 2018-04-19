@@ -8,16 +8,17 @@ module.exports = {
     //содержит абсолютный путь для директории frontend
     context: __dirname + "/frontend",
     entry: {
-        home:'./home',
-        about: './about'
+        app:'./app'
     },
     output: {
         filename: '[name].js',
         path: path.resolve(__dirname, './public'),
         /*для динамического выполнения require. !!!ВАЖНО чтобы значение publicPath оканчивалось на / иначе
         сборка выполенся, но при выполнении require выпадет ошибка
+        !!!Значение publicPath также зависит от корневой директории сервера. Если это public и кусочки сборки
+        лежат в корне public то publicPath = '/'. При таком случае даже можно не указывать publicPath.
         */
-        publicPath: '/public/'
+        publicPath: '/'
     },
 
     watch: nodeEnv === 'development',
@@ -38,14 +39,6 @@ module.exports = {
             }
         }]
     },
-
-    optimization:{
-        splitChunks: {
-            name: 'commons',
-            minSize: 1,
-            chunks: 'initial'
-        }
-    }
 };
 
 if (nodeEnv !== 'development') {
