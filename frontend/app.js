@@ -32,3 +32,15 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
     }
 });
+
+let moduleName = location.pathname.slice(1, location.pathname.length - 1);
+
+if(moduleName) {
+    alert('Go to module ' + moduleName);
+    /*
+    * Конструкция указывает для webpack в какой директории лежат модули для сборки
+    * и далее будет вызываться модуль moduleName, который был указан в адресной строке*/
+    let route = require('./routes/' + moduleName + '.js');
+
+    route();
+}
