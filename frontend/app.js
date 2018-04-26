@@ -39,8 +39,13 @@ if(moduleName) {
     alert('Go to module ' + moduleName);
     /*
     * Конструкция указывает для webpack в какой директории лежат модули для сборки
-    * и далее будет вызываться модуль moduleName, который был указан в адресной строке*/
-    let route = require('./routes/' + moduleName + '.js');
+    * и далее будет вызываться модуль moduleName, который был указан в адресной строке.
+    * Все модули будут собраны в один файл*/
+    // let route = require('./routes/' + moduleName + '.js');
+    // route();
 
-    route();
+    //но чтобы каждый модуль собирался в отдельный кусок и подгружался динамически и асинхронно
+    require('bundle-loader!./routes/' + moduleName + '.js')( function(route) {
+        route();
+    });
 }
